@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqu3mps0ei8f5"]
+
+[ext_resource type="Texture2D" uid="uid://daampp5gcvnu4" path="res://assets/sprites/tilemap-stickman.png" id="1_f7efo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yyn5"]
+size = Vector2(440, 142)
+
+[node name="Platform" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.542904, 0.542904)
+texture = ExtResource("1_f7efo")
+region_enabled = true
+region_rect = Rect2(6.00037, 5.75505, 862, 303.468)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_2yyn5")
+one_way_collision = true

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3dx7635vag4i"]
+
+[ext_resource type="Texture2D" uid="uid://daampp5gcvnu4" path="res://assets/sprites/tilemap-stickman.png" id="1_j6mk5"]
+[ext_resource type="PackedScene" uid="uid://cmqqohf5kmj3r" path="res://scenes/killzone.tscn" id="2_5fl35"]
+
+[node name="enemy" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_j6mk5")
+region_enabled = true
+region_rect = Rect2(503.301, 315.006, 275.301, 344.653)
+
+[node name="Killzone" parent="." instance=ExtResource("2_5fl35")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Killzone"]
+position = Vector2(-19, 85)
+scale = Vector2(1.39886, 0.8902)
+polygon = PackedVector2Array(-59.1375, 95.1666, 7.86355, -207.819, 81.6915, 95.1666)

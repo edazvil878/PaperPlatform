@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgkcln7legfuj"]
+
+[ext_resource type="Texture2D" uid="uid://daampp5gcvnu4" path="res://assets/sprites/tilemap-stickman.png" id="1_ayr40"]
+
+[node name="cesped" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ayr40")
+region_enabled = true
+region_rect = Rect2(2989.67, 102.493, 436.449, 228.693)
