@@ -1,0 +1,352 @@
+[gd_scene load_steps=21 format=3 uid="uid://b0vwd1q6nekx"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_gh8es"]
+[ext_resource type="PackedScene" uid="uid://cb7jgqsa0pc6j" path="res://scenes/player.tscn" id="1_jftsa"]
+[ext_resource type="PackedScene" uid="uid://boutk2uxlc2th" path="res://scenes/hud.tscn" id="1_nm5fi"]
+[ext_resource type="Texture2D" uid="uid://c1wh1bv1unjvk" path="res://assets/sprites/papel.png" id="1_rmtig"]
+[ext_resource type="PackedScene" uid="uid://bqu3mps0ei8f5" path="res://scenes/platform.tscn" id="3_6dikt"]
+[ext_resource type="Texture2D" uid="uid://daampp5gcvnu4" path="res://assets/sprites/tilemap-stickman.png" id="3_e3qqi"]
+[ext_resource type="PackedScene" uid="uid://cmqqohf5kmj3r" path="res://scenes/killzone.tscn" id="5_wgd6e"]
+[ext_resource type="PackedScene" uid="uid://uwnove2kr3pm" path="res://scenes/coin.tscn" id="7_6vedh"]
+[ext_resource type="FontFile" uid="uid://b7iv8io2hj12l" path="res://assets/fonts/PixelOperator8.ttf" id="7_rh4ft"]
+[ext_resource type="PackedScene" uid="uid://c3dx7635vag4i" path="res://scenes/enemy.tscn" id="8_wuoqp"]
+[ext_resource type="PackedScene" uid="uid://dunvjsfpxwxh3" path="res://scenes/flor.tscn" id="10_8bpmo"]
+[ext_resource type="PackedScene" uid="uid://cgkcln7legfuj" path="res://scenes/cesped.tscn" id="10_8eww7"]
+[ext_resource type="Texture2D" uid="uid://cptkbj28sqot6" path="res://assets/sprites/flecha.png" id="12_7beqb"]
+[ext_resource type="PackedScene" uid="uid://o0ori11c8key" path="res://scenes/nube.tscn" id="12_27bam"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yl3gc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_muyp5"]
+texture = ExtResource("3_e3qqi")
+margins = Vector2i(3, 0)
+texture_region_size = Vector2i(430, 308)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-187.728, -118.433, 215, -123.472, 215, 131.032, -175.129, 154)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-215, -123.472, 187.728, -131.032, 172.609, 123.472, -215, 154)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-149.931, -118.433, 215, -118.433, 215, 154, -172.609, 154)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-215, -118.433, 215, -118.433, 215, 154, -215, 154)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-215, -118.433, 162.53, -118.433, 162.53, 154, -215, 154)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-215, -154, 154.97, -154, 157.49, 154, -215, 154)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-215, -154, 215, -154, 215, 154, -215, 154)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-215, -154, 215, -154, 215, -22.6786, -215, -35.2778)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-215, -154, 147.411, -154, 119.693, -42.8373, -215, -35.2778)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-172.609, -154, 215, -154, 215, -37.7976, -165.05, -42.8373)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-177.649, -154, 215, -154, 215, 154, -172.609, 154)
+1:1/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_mdr3b"]
+tile_size = Vector2i(430, 308)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_muyp5")
+
+[sub_resource type="Animation" id="Animation_toa6j"]
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.46667, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(852, -619), Vector2(1376, -934), Vector2(1376, -934)]
+}
+
+[sub_resource type="Animation" id="Animation_j3ru0"]
+resource_name = "move"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(718, -403), Vector2(1551, -1128), Vector2(1551, -1128)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4uck6"]
+_data = {
+"RESET": SubResource("Animation_toa6j"),
+"move": SubResource("Animation_j3ru0")
+}
+
+[node name="Game" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_nm5fi")]
+
+[node name="Killzone" parent="." instance=ExtResource("5_wgd6e")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(78, 140)
+shape = SubResource("WorldBoundaryShape2D_yl3gc")
+
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_gh8es")
+
+[node name="Label" type="Label" parent="GameManager"]
+offset_left = -49.0
+offset_top = -37.0
+offset_right = -9.0
+offset_bottom = -14.0
+theme_override_fonts/font = ExtResource("7_rh4ft")
+theme_override_font_sizes/font_size = 8
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_mdr3b")
+format = 2
+layer_0/name = "Back"
+layer_0/tile_data = PackedInt32Array(-327667, 131072, 0, -262131, 131072, 1, -196595, 131072, 2, -327666, 196608, 0, -262130, 196608, 1, -196594, 196608, 2, -327665, 262144, 0, -262129, 262144, 1, -196593, 262144, 2, -196591, 131072, 0, -131055, 131072, 1, -65519, 131072, 2, -196590, 196608, 0, -131054, 196608, 1, -65518, 196608, 2, -196589, 196608, 0, -131053, 196608, 1, -65517, 196608, 2, -196588, 196608, 0, -131052, 196608, 1, -65516, 196608, 2, -196587, 196608, 0, -131051, 196608, 1, -65515, 196608, 2, -196586, 196608, 0, -131050, 196608, 1, -65514, 196608, 2, -196585, 262144, 0, -131049, 262144, 1, -65513, 262144, 2)
+layer_1/name = "Mid"
+layer_1/tile_data = PackedInt32Array(65535, 131072, 0, 131071, 131072, 1, 196607, 131072, 2, 0, 196608, 0, 65536, 196608, 1, 131072, 196608, 2, 1, 196608, 0, 65537, 196608, 1, 131073, 196608, 2, 2, 196608, 0, 65538, 196608, 1, 131074, 196608, 2, 3, 196608, 0, 65539, 196608, 1, 131075, 196608, 2, 4, 196608, 0, 65540, 196608, 1, 131076, 196608, 2, 5, 196608, 0, 65541, 196608, 1, 131077, 196608, 2, 6, 262144, 0, 65542, 262144, 1, 131078, 262144, 2, -262140, 131072, 0, -196604, 131072, 1, -131068, 131072, 2, -262139, 196608, 0, -196603, 196608, 1, -131067, 196608, 2, -262138, 262144, 0, -196602, 262144, 1, -131066, 262144, 2, -262136, 131072, 0, -196600, 131072, 1, -131064, 131072, 2, -262135, 196608, 0, -196599, 196608, 1, -131063, 196608, 2, -262134, 262144, 0, -196598, 262144, 1, -131062, 262144, 2)
+
+[node name="Player" parent="." instance=ExtResource("1_jftsa")]
+position = Vector2(-9, -175)
+scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -7)
+limit_bottom = 120
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" groups=["coin"] instance=ExtResource("7_6vedh")]
+position = Vector2(2429, -93)
+scale = Vector2(0.3, 0.3)
+
+[node name="Coin2" parent="Coins" groups=["coin"] instance=ExtResource("7_6vedh")]
+position = Vector2(4204, -1970)
+scale = Vector2(0.3, 0.3)
+
+[node name="Coin3" parent="Coins" groups=["coin"] instance=ExtResource("7_6vedh")]
+position = Vector2(9014, -2042)
+scale = Vector2(0.3, 0.3)
+
+[node name="Coin4" parent="Coins" groups=["coin"] instance=ExtResource("7_6vedh")]
+position = Vector2(8194, -987)
+scale = Vector2(0.3, 0.3)
+
+[node name="Coin5" parent="Coins" groups=["coin"] instance=ExtResource("7_6vedh")]
+position = Vector2(10522, -1549)
+scale = Vector2(0.3, 0.3)
+
+[node name="Enemy" type="Node" parent="."]
+
+[node name="enemy" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(1875, -47)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy2" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(1986, -48)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy3" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(3736, -1279)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy4" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(6098, -1589)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy5" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(6212, -1587)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy6" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(6333, -1588)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy7" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(6626, -1588)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy8" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(8027, -976)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy9" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(8368, -973)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy10" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(8740, -973)
+scale = Vector2(0.4, 0.4)
+
+[node name="enemy11" parent="Enemy" instance=ExtResource("8_wuoqp")]
+position = Vector2(9616, -1755)
+scale = Vector2(0.4, 0.4)
+
+[node name="Platfomrs" type="Node" parent="."]
+
+[node name="Platform" parent="Platfomrs" instance=ExtResource("3_6dikt")]
+position = Vector2(359, -250)
+scale = Vector2(0.7, 0.7)
+
+[node name="Platform4" parent="Platfomrs" instance=ExtResource("3_6dikt")]
+position = Vector2(5106, -1409)
+scale = Vector2(0.7, 0.7)
+
+[node name="Platform5" parent="Platfomrs" instance=ExtResource("3_6dikt")]
+position = Vector2(10036, -1198)
+scale = Vector2(0.7, 0.7)
+
+[node name="Platform6" parent="Platfomrs" instance=ExtResource("3_6dikt")]
+position = Vector2(10507, -1427)
+scale = Vector2(0.7, 0.7)
+
+[node name="Platform7" parent="Platfomrs" instance=ExtResource("3_6dikt")]
+position = Vector2(9685, -1638)
+scale = Vector2(0.7, 0.7)
+
+[node name="Platform8" parent="Platfomrs" instance=ExtResource("3_6dikt")]
+position = Vector2(9115, -1907)
+scale = Vector2(0.7, 0.7)
+
+[node name="Platform2" parent="Platfomrs" instance=ExtResource("3_6dikt")]
+position = Vector2(852, -619)
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platfomrs/Platform2"]
+libraries = {
+"": SubResource("AnimationLibrary_4uck6")
+}
+autoplay = "move"
+
+[node name="Platform3" parent="Platfomrs" instance=ExtResource("3_6dikt")]
+position = Vector2(4182, -1488)
+scale = Vector2(0.7, 0.7)
+
+[node name="decoracion" type="Node" parent="."]
+
+[node name="cesped" parent="decoracion" instance=ExtResource("10_8eww7")]
+position = Vector2(2371, -1243)
+scale = Vector2(0.3, 0.3)
+
+[node name="cesped4" parent="decoracion" instance=ExtResource("10_8eww7")]
+position = Vector2(5884, -1554)
+scale = Vector2(0.3, 0.3)
+
+[node name="cesped5" parent="decoracion" instance=ExtResource("10_8eww7")]
+position = Vector2(6495, -1551)
+scale = Vector2(0.3, 0.3)
+
+[node name="cesped2" parent="decoracion" instance=ExtResource("10_8eww7")]
+position = Vector2(-179, -14)
+scale = Vector2(0.3, 0.3)
+
+[node name="cesped3" parent="decoracion" instance=ExtResource("10_8eww7")]
+position = Vector2(-179, -14)
+scale = Vector2(0.3, 0.3)
+
+[node name="flor3" parent="decoracion" instance=ExtResource("10_8bpmo")]
+position = Vector2(2168, -1255)
+scale = Vector2(0.3, 0.3)
+
+[node name="flor6" parent="decoracion" instance=ExtResource("10_8bpmo")]
+position = Vector2(7606, -948)
+scale = Vector2(0.3, 0.3)
+
+[node name="flor7" parent="decoracion" instance=ExtResource("10_8bpmo")]
+position = Vector2(7722, -947)
+scale = Vector2(0.3, 0.3)
+
+[node name="flor8" parent="decoracion" instance=ExtResource("10_8bpmo")]
+position = Vector2(7869, -946)
+scale = Vector2(0.3, 0.3)
+
+[node name="flor2" parent="decoracion" instance=ExtResource("10_8bpmo")]
+position = Vector2(2280, -1259)
+rotation = -0.154498
+scale = Vector2(0.3, 0.3)
+
+[node name="flor" parent="decoracion" instance=ExtResource("10_8bpmo")]
+position = Vector2(2037, -1257)
+scale = Vector2(0.3, 0.3)
+
+[node name="flor4" parent="decoracion" instance=ExtResource("10_8bpmo")]
+position = Vector2(158, -24)
+scale = Vector2(0.3, 0.3)
+
+[node name="flor5" parent="decoracion" instance=ExtResource("10_8bpmo")]
+position = Vector2(999, -24)
+scale = Vector2(0.3, 0.3)
+
+[node name="flecha" type="Sprite2D" parent="decoracion"]
+position = Vector2(7211, -1443)
+scale = Vector2(1.38304, 1.38304)
+texture = ExtResource("12_7beqb")
+
+[node name="nube" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(-195, -1137)
+scale = Vector2(0.3, 0.3)
+
+[node name="nube2" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(905, -1599)
+scale = Vector2(0.38, 0.38)
+
+[node name="nube3" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(1896, -2059)
+scale = Vector2(0.23, 0.23)
+
+[node name="nube4" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(2925, -1734)
+scale = Vector2(0.22, 0.22)
+
+[node name="nube5" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(3598, -2330)
+scale = Vector2(0.28, 0.28)
+
+[node name="nube6" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(5083, -2072)
+scale = Vector2(0.35, 0.35)
+
+[node name="nube7" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(6551, -2252)
+rotation = -6.24951
+scale = Vector2(0.34, 0.34)
+
+[node name="nube8" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(7941, -1437)
+scale = Vector2(0.3, 0.3)
+
+[node name="nube9" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(8235, -2240)
+scale = Vector2(0.3, 0.3)
+
+[node name="nube10" parent="decoracion" instance=ExtResource("12_27bam")]
+position = Vector2(10279, -2222)
+scale = Vector2(0.3, 0.3)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_rmtig")
+centered = false

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://o0ori11c8key"]
+
+[ext_resource type="Texture2D" uid="uid://dp2g8rlekaw78" path="res://assets/sprites/nube.png" id="1_er3ph"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7vc3"]
+atlas = ExtResource("1_er3ph")
+region = Rect2(0, 0, 2080, 863)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s311c"]
+atlas = ExtResource("1_er3ph")
+region = Rect2(0, 863, 2080, 863)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wrkol"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_c7vc3")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_s311c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="nube" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wrkol")
+autoplay = "default"
+frame_progress = 0.662732

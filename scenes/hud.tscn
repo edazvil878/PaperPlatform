@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://boutk2uxlc2th"]
+
+[ext_resource type="Texture2D" uid="uid://bha6kykbyuhrr" path="res://assets/sprites/dinero.png" id="1_decff"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_epjtd"]
+[ext_resource type="FontFile" uid="uid://b5xfn0ivibbfn" path="res://assets/fonts/Paperplatform-Regular.ttf" id="3_fne5v"]
+[ext_resource type="Texture2D" uid="uid://dmcf0buw15wdh" path="res://assets/sprites/puerta.png" id="4_ty7vi"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("label", "mensaje_label") groups=["hud"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_epjtd")
+label = NodePath("TextureRect/Label")
+mensaje_label = NodePath("mensaje_label")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -290.0
+offset_top = 30.0
+offset_right = 55.0001
+offset_bottom = 340.0
+grow_horizontal = 0
+scale = Vector2(0.426651, 0.426651)
+texture = ExtResource("1_decff")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.432
+anchor_bottom = 0.703
+offset_left = 349.231
+offset_top = -12.0406
+offset_right = 685.231
+offset_bottom = 48.9494
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_fne5v")
+theme_override_font_sizes/font_size = 120
+text = "0/0"
+vertical_alignment = 1
+
+[node name="mensaje_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -349.5
+offset_top = 33.0
+offset_right = 349.5
+offset_bottom = 281.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 11.0
+offset_right = 278.0
+offset_bottom = 219.0
+scale = Vector2(0.620037, 0.620037)
+icon = ExtResource("4_ty7vi")
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

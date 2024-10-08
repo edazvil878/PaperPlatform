@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxihkohuwjo6s"]
+
+[ext_resource type="Texture2D" uid="uid://dhapa2mnmyuqg" path="res://assets/sprites/bandera.png" id="1_1ig80"]
+[ext_resource type="Script" path="res://scripts/bandera.gd" id="1_tkojy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3idwc"]
+atlas = ExtResource("1_1ig80")
+region = Rect2(2190, 0, 438, 1240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gj1v0"]
+atlas = ExtResource("1_1ig80")
+region = Rect2(2628, 0, 438, 1240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cooi2"]
+atlas = ExtResource("1_1ig80")
+region = Rect2(3066, 0, 438, 1240)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7da0w"]
+atlas = ExtResource("1_1ig80")
+region = Rect2(2190, 0, 438, 1240)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uavt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3idwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gj1v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cooi2")
+}],
+"loop": false,
+"name": &"levantar",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7da0w")
+}],
+"loop": true,
+"name": &"quieta",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5mf5"]
+size = Vector2(298, 543)
+
+[node name="Bandera" type="Area2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_tkojy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uavt5")
+animation = &"levantar"
+frame = 2
+frame_progress = 0.70909
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-83, 2.5)
+shape = SubResource("RectangleShape2D_f5mf5")

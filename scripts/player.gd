@@ -3,10 +3,17 @@ extends CharacterBody2D
 
 const SPEED = 500.0
 const JUMP_VELOCITY = -850.0
+var is_control_enabled: bool = true 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+func _ready():
+	add_to_group("Player")
 
 func _physics_process(delta: float) -> void:
+	
+	if not is_control_enabled:
+		return 
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
